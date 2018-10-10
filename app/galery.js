@@ -1,2 +1,3 @@
-var a = 5
-console.log(5)
+let a = () => 3
+
+Promise.resolve(console.log(a()))
