@@ -7,6 +7,7 @@ module.exports = {
   mode: 'development',
   resolve: {
     modules: ['node_modules'],
+    extensions: ['.js'],
   },
   entry: [
     './app/index.js',
@@ -32,6 +33,8 @@ module.exports = {
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
       hash: true,
+      title: 'My Galery',
+      template: './index.html'
     }),
     new webpack.HotModuleReplacementPlugin(),
   ]

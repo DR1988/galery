@@ -1,6 +1,6 @@
-import './test.css'
+import './galery.css'
 export default () => {
-  let a = () => 4
+  let a = () => 3
   console.log(22);
   Promise.resolve(console.log(a()))
 }
