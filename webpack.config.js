@@ -2,10 +2,31 @@ const webpack = require('webpack')
 const path = require('path')
 
 module.exports = {
-  entry: './app/galery.js',
+  mode: 'development',
+  resolve: {
+    modules: ['node_modules'],
+  },
+  entry: [
+    './app/index.js',
+    'webpack-hot-middleware/client',
+  ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/',
   },
-  // devtool: 'hidden-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader?importLoaders=1'],
+      },
+      { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
+      { test: /\.(otf|ttf|eot)$/, loader: 'file-loader' },
+      { test: /\.(png|jpg|gif)$/, loader: 'file-loader' }],
+  },
+  devtool: 'cheap-eval-source-map',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ]
 };
